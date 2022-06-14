@@ -5,7 +5,7 @@
 A quiz to test your knowladge, where you can select your answer and store your highscore.
 
 ## Visuals
-
+![Screenshot 2022-06-14 162437](https://user-images.githubusercontent.com/104728746/173682773-2acb138b-a29f-4246-bcda-b9ccc3bca4fa.png)
 
 
 ## Usage
