@@ -1,26 +1,27 @@
-var startBtn = document.getElementById("startBtn");
-var time = 75;
-var time_remaining = true;
-var time_start= false;
-var countdownTimer = document.getElementById("countdownTimer");
-var homeContainer =  document.getElementById("homeContainer");
-var quizContainer = document.getElementById("quizContainer");
-var questionHeading = document.getElementById("questionHeading");
-var answerChoiceA = document.getElementById("answerChoiceA");
-var answerChoiceB = document.getElementById("answerChoiceB");
-var answerChoiceC = document.getElementById("answerChoiceC");
-var answerChoiceD = document.getElementById("answerChoiceD");
-var correctAnswer = document.getElementById("answer");    
-var high_scores= [];
-var output="";
- 
-var score = 0;
-let i = 0;
+
+//selecting page elements
+
+var questionsEl = document.querySelector("#questions");
+var timerEl = document.querySelector("#time");
+var choicesEl = document.querySelector("#choices");
+var submitBtn = document.querySelector("#submit");
+var startBtn = document.querySelector("#start");
+var initialsEl = document.querySelector("#initials");
+var questiontitleEl = document.querySelector("#question-title");
+var divlist = document.querySelector("#begin");
+var answerbtn = document.querySelector("#answer");
+var nextbtn = document.querySelector('#next')
+var currentQ = document.querySelector('#current');
+let currentquestionindex
 
 
+//question var
 
+var currentquestion = 1 
 
-var questions = [
+//Questions
+
+var questionsEl = [
   {
     title: "______ is the process of finding errors and fixing them with a program",
     choices: ["Fixing", "Debugging", "Scanning"],
@@ -63,14 +64,14 @@ var questions = [
     answer: "Assembly"
   },
   {
-    title: "What is the data type of variables in JavaScript?",
+    title: "What does || mean?",
     choices: [
-      "Object data types",
-      "Function data type",
-      "None of the above",
+      "And",
+      "Or",
+      "Equal to",
       "All of the above"
     ],
-    answer: "Object data types"
+    answer: "Or"
   },
   
 
@@ -78,8 +79,77 @@ var questions = [
 
 
 
+//add event listener to start quiz
+
+//when start button is clicked questions will show
+
+var startBtn = document.getElementById('start'); 
+
+//Renders current question
+function renderQuestion() {
+  questionsEl.textContent = questionsEl[currentQ].title;
+  for (i = 0; i < answersEl.children.length; i++) {
+      answersEl.children[i].children[0].textContent = `${(i + 1)}: ${questions[currentQ].choices[i]}`;
+  }
+}
+
+
+
+function setnextquestion() {
+  showquestion(currentquestionindex)
+  resetstate()
+}
+
+//Renders current question
+function renderQuestion() {
+  questionsEl.textContent = questionsEl[currentQ].title;
+  for (i = 0; i < answerbtn.children.length; i++) {
+      answersbtn.children[i].children[0].textContent = `${(i + 1)}: ${questions[currentQ].choices[i]}`;
+  }
+}
+
+//TIMER
+
+//start the timer
+
+function startTimer(duration, display) {
+
+  var timer = duration, minutes, seconds;
+
+  setInterval(function () {
+      minutes = parseInt(timer / 60, 10);
+      seconds = parseInt(timer % 60, 10);
+
+      minutes = minutes < 10 ? "0" + minutes : minutes;
+      seconds = seconds < 10 ? "0" + seconds : seconds;
+
+      display.textContent = minutes + ":" + seconds;
+
+      if (--timer < 0) {
+          timer = duration;
+      }
+      if(seconds === 0) {
+          alert('Game Over!')
+      }
+  }, 1000);
+
+}
+
+//when start button is clicked the timer will start
+
+startBtn.addEventListener('click',start);
+startBtn.addEventListener("click", function() {
+    var twoMinutes = 60 * 2,
+        display = document.querySelector('#time');
+    startTimer(twoMinutes, display);
+});
+
+ 
+
+
 //SCORES
 
+//Store scores in local storage
 function StoreHighscores() {
     
     var highscores = JSON.parse(window.localStorage.getItem("highscores")) || [];

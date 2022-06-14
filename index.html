@@ -3,6 +3,7 @@
   <head>
 
     <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Coding Quiz</title>
 
     <link rel="stylesheet" href="./CSS/style.css" />
@@ -16,10 +17,11 @@
 
     <div class="timer">Time: <span id="time">0</span></div>
 
-    <div class="Begin">
+    <div class="Begin" class ="hide">
       <div id="start-screen" class="start">
+        
         <h1>Coding Quiz </h1>
-        <p> Test your knowladge! Hit the start button to begin the timed quiz, hit the highscores button to view past scores. But be carful, if you answer a question incorrect than time will be subtracted from the clock!
+        <p> Test your Knowledge! Hit the start button to begin the timed quiz, hit the highscores button to view past scores. But be careful, if you answer a question incorrect than time will be subtracted from the clock!
           
         </p>
         <button id="start">Start</button>
@@ -27,8 +29,16 @@
 
       <div id="questions" class="hide">
         <h2 id="question-title"></h2>
-        <div id="choices" class="choices"></div>
+        <button id="first"></button>
+        <button id="second"></button>
+        <button id="third"></button>
+        <button id="fourth"></button>
       </div>
+
+      <div id='choices'>
+        <button id="nextbtn" class='nextb'  class='hide'>Next Question</button>
+        <button id="submitbtn" class='submitb  hide'>Submit</button>
+    </div>
 
       <div id="end" class="hide">
         <h2>All done!</h2>

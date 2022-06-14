@@ -7,13 +7,17 @@ body {
     
     font-weight: bolder;
     font-family:"Roboto Mono", monospace ;
+    justify-content: center;
   }
+
+  
   
   .hide {
     display: none;
   }
   
   .start {
+    
     text-align: center;
     font-family: "Roboto Mono",monospace;
   }
