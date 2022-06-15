@@ -94,19 +94,11 @@ function renderQuestion() {
 }
 
 
-
 function setnextquestion() {
   showquestion(currentquestionindex)
   resetstate()
 }
 
-//Renders current question
-function renderQuestion() {
-  questionsEl.textContent = questionsEl[currentQ].title;
-  for (i = 0; i < answerbtn.children.length; i++) {
-      answersbtn.children[i].children[0].textContent = `${(i + 1)}: ${questions[currentQ].choices[i]}`;
-  }
-}
 
 //TIMER
 
@@ -137,8 +129,12 @@ function startTimer(duration, display) {
 
 //when start button is clicked the timer will start
 
-startBtn.addEventListener('click',start);
+
+
 startBtn.addEventListener("click", function() {
+ 
+
+  
     var twoMinutes = 60 * 2,
         display = document.querySelector('#time');
     startTimer(twoMinutes, display);
